@@ -1,10 +1,11 @@
 # Terraform module: AWS ELB
 
+[![Tag](https://img.shields.io/github/tag/cytopia/devilbox.svg)](https://github.com/cytopia/terraform-aws-elb/releases)
+[![Terraform](https://img.shields.io/badge/Terraform--registry-aws--elb-brightgreen.svg)](https://registry.terraform.io/modules/cytopia/elb/aws/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 This Terraform module creates an ELB with optionally a public and/or private Route53 DNS record attached to it.
 Additionally it provides the option to attach the created ELB to an autoscaling group by name.
-
-[![Tag](https://img.shields.io/github/tag/cytopia/devilbox.svg)](https://github.com/cytopia/terraform-aws-elb/releases)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## Usage
 
