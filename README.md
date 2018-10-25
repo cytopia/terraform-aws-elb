@@ -28,7 +28,7 @@ module "elb" {
   inbound_cidr_blocks = ["0.0.0.0/0"]
 
   # Create this route53 public DNS record
-  public_dns_name = "my-service.example.com"
+  route53_public_dns_name = "my-service.example.com"
 }
 ```
 
