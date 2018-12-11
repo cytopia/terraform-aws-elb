@@ -104,6 +104,7 @@ resource "aws_route53_record" "private" {
 }
 
 data "aws_route53_zone" "public" {
+  depends_on   = ["aws_route53_record.public"]
   count        = "${var.route53_public_dns_name == "" ? 0 : 1}"
   private_zone = false
 
@@ -112,6 +113,7 @@ data "aws_route53_zone" "public" {
 }
 
 data "aws_route53_zone" "private" {
+  depends_on   = ["aws_route53_record.private"]
   count        = "${var.route53_private_dns_name == "" ? 0 : 1}"
   private_zone = true
 
