@@ -1,11 +1,13 @@
 # Terraform module: AWS ELB
 
+[![Build Status](https://travis-ci.org/cytopia/terraform-aws-elb.svg?branch=master)](https://travis-ci.org/cytopia/terraform-aws-elb)
 [![Tag](https://img.shields.io/github/tag/cytopia/terraform-aws-elb.svg)](https://github.com/cytopia/terraform-aws-elb/releases)
 [![Terraform](https://img.shields.io/badge/Terraform--registry-aws--elb-brightgreen.svg)](https://registry.terraform.io/modules/cytopia/elb/aws/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 This Terraform module creates an ELB with optionally a public and/or private Route53 DNS record attached to it.
 Additionally it provides the option to attach the created ELB to an autoscaling group by name.
+
 
 ## Usage
 
@@ -32,9 +34,11 @@ module "elb" {
 }
 ```
 
+
 ## Examples
 
 * [Complete ELB](examples/complete/)
+
 
 ## Inputs
 
@@ -66,6 +70,7 @@ module "elb" {
 | public_dns_evaluate_target_health | Set to true if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. | string | `true` | no |
 | private_dns_evaluate_target_health | Set to true if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. | string | `true` | no |
 
+
 ## Outputs
 
 | Name | Description |
@@ -77,9 +82,11 @@ module "elb" {
 | route53_public_dns_name | The route53 public dns name of the ELB if set. |
 | route53_private_dns_name | The route53 private dns name of the ELB if set. |
 
+
 ## Authors
 
 Module managed by [cytopia](https://github.com/cytopia).
+
 
 ## License
 
