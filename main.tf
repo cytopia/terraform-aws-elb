@@ -2,6 +2,8 @@
 # ELB
 # -------------------------------------------------------------------------------------------------
 resource "aws_elb" "elb" {
+  count = "${var.enable ? 1 : 0}"
+
   name            = "${var.name}"
   subnets         = ["${var.subnet_ids}"]
   security_groups = ["${aws_security_group.elb.id}"]
@@ -34,6 +36,8 @@ resource "aws_elb" "elb" {
 # Security Groups
 # -------------------------------------------------------------------------------------------------
 resource "aws_security_group" "elb" {
+  count = "${var.enable ? 1 : 0}"
+
   name_prefix = "${var.name}${var.sg_name_suffix_elb}"
   description = "ELB security group for external connection"
   vpc_id      = "${var.vpc_id}"
@@ -69,7 +73,8 @@ resource "aws_security_group" "elb" {
 # ASG Attachment (Optional)
 # -------------------------------------------------------------------------------------------------
 resource "aws_autoscaling_attachment" "asg" {
-  count                  = "${var.asg_name == "" ? 0 : 1}"
+  count = "${var.enable && var.asg_name != "" ? 1 : 0}"
+
   autoscaling_group_name = "${var.asg_name}"
   elb                    = "${aws_elb.elb.id}"
 }
@@ -78,7 +83,8 @@ resource "aws_autoscaling_attachment" "asg" {
 # Route53 DNS (Optional)
 # -------------------------------------------------------------------------------------------------
 resource "aws_route53_record" "public" {
-  count   = "${var.route53_public_dns_name == "" ? 0 : 1}"
+  count = "${var.enable && var.route53_public_dns_name != "" ? 1 : 0}"
+
   zone_id = "${data.aws_route53_zone.public.zone_id}"
   name    = "${var.route53_public_dns_name}"
   type    = "A"
@@ -91,7 +97,8 @@ resource "aws_route53_record" "public" {
 }
 
 resource "aws_route53_record" "private" {
-  count   = "${var.route53_private_dns_name == "" ? 0 : 1}"
+  count = "${var.enable && var.route53_private_dns_name != "" ? 1 : 0}"
+
   zone_id = "${data.aws_route53_zone.private.zone_id}"
   name    = "${var.route53_private_dns_name}"
   type    = "A"
@@ -104,7 +111,8 @@ resource "aws_route53_record" "private" {
 }
 
 data "aws_route53_zone" "public" {
-  count        = "${var.route53_public_dns_name == "" ? 0 : 1}"
+  count = "${var.enable && var.route53_public_dns_name != "" ? 1 : 0}"
+
   private_zone = false
 
   # Removes the first sub-domain part from the FQDN to use as hosted zone.
@@ -112,7 +120,8 @@ data "aws_route53_zone" "public" {
 }
 
 data "aws_route53_zone" "private" {
-  count        = "${var.route53_private_dns_name == "" ? 0 : 1}"
+  count = "${var.enable && var.route53_private_dns_name != "" ? 1 : 0}"
+
   private_zone = true
 
   # Removes the first sub-domain part from the FQDN to use as hosted zone.

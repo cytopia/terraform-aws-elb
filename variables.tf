@@ -1,4 +1,12 @@
 # -------------------------------------------------------------------------------------------------
+# Enable/Disable
+# -------------------------------------------------------------------------------------------------
+variable "enable" {
+  description = "Whether or not to enable this module. This is required due to the lack of using count for modules. Set it to false to disable the creation of the ELB. Defaults to true"
+  default     = true
+}
+
+# -------------------------------------------------------------------------------------------------
 # Placement
 # -------------------------------------------------------------------------------------------------
 variable "vpc_id" {
