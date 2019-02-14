@@ -8,7 +8,6 @@
 This Terraform module creates an ELB with optionally a public and/or private Route53 DNS record attached to it.
 Additionally it provides the option to attach the created ELB to an autoscaling group by name.
 
-
 ## Usage
 
 ```hcl
@@ -34,11 +33,9 @@ module "elb" {
 }
 ```
 
-
 ## Examples
 
 * [Complete ELB](examples/complete/)
-
 
 ## Inputs
 
@@ -82,11 +79,9 @@ module "elb" {
 | route53\_public\_dns\_name | The route53 public dns name of the ELB if set. |
 | route53\_private\_dns\_name | The route53 private dns name of the ELB if set. |
 
-
 ## Authors
 
 Module managed by [cytopia](https://github.com/cytopia).
-
 
 ## License
 
