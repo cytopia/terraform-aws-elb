@@ -51,6 +51,7 @@ module "elb" {
 # -------------------------------------------------------------------------------------------------
 data "aws_ami" "bastion" {
   most_recent = true
+  owners      = ["amazon"]
 
   filter {
     name   = "owner-alias"
