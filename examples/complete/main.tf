@@ -42,7 +42,8 @@ module "elb" {
   instance_port = "22"
 
   # Security
-  inbound_cidr_blocks = ["0.0.0.0/0"]
+  inbound_cidr_blocks  = ["0.0.0.0/0"]
+  security_group_names = ["default"]
 }
 
 # -------------------------------------------------------------------------------------------------
