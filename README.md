@@ -63,6 +63,7 @@ module "elb" {
 | name | Name of the ELB and security group resources. | string | n/a | yes |
 | tags | Tags to apply to all resources. | map | `<map>` | no |
 | sg\_name\_suffix\_elb | Name suffix to append to the ELB security group. | string | `"-elb"` | no |
+| security\_group\_names | List of one or more security groups to be added to the load balancer | list(string) | `[]` | no |
 | route53\_public\_dns\_name | If set, the ELB will be assigned this public DNS name via Route53. | string | `""` | no |
 | route53\_private\_dns\_name | If set, the ELB will be assigned this private DNS name via Route53. | string | `""` | no |
 | public\_dns\_evaluate\_target\_health | Set to true if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. | string | `"true"` | no |

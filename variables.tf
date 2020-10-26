@@ -34,6 +34,12 @@ variable "inbound_cidr_blocks" {
   type        = "list"
 }
 
+variable "security_group_names" {
+  description = "List of one or more security groups to be added to the load balancer"
+  type        = "list"
+  default     = []
+}
+
 # -------------------------------------------------------------------------------------------------
 # ELB Settings (Optional)
 # -------------------------------------------------------------------------------------------------
