@@ -4,9 +4,13 @@
 resource "aws_elb" "elb" {
   count = "${var.enable ? 1 : 0}"
 
-  name            = "${var.name}"
-  subnets         = ["${var.subnet_ids}"]
-  security_groups = ["${aws_security_group.elb.id}"]
+  name    = "${var.name}"
+  subnets = ["${var.subnet_ids}"]
+
+  security_groups = [
+    "${aws_security_group.elb.id}",
+    "${flatten(data.aws_security_groups.elb.ids)}",
+  ]
 
   internal                    = "${var.internal}"
   cross_zone_load_balancing   = "${var.cross_zone_load_balancing}"
