@@ -1,6 +1,6 @@
-output "security_group_id" {
-  description = "The ID of the ELB security group to attach the the LC/ASG/EC2 instance in order to be accessable by the ELB."
-  value       = "${element(concat(aws_security_group.elb.*.id, list("")), 0)}"
+output "security_group_ids" {
+  description = "The IDs of the ELB security groups to attach the the LC/ASG/EC2 instance in order to be accessable by the ELB."
+  value       = ["${element(concat(aws_security_group.elb.*.id, list("")), 0)}"]
 }
 
 output "id" {
