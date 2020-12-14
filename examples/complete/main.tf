@@ -73,7 +73,7 @@ resource "aws_launch_configuration" "bastion" {
   name_prefix     = "${var.name}"
   image_id        = "${data.aws_ami.bastion.image_id}"
   instance_type   = "t2.micro"
-  security_groups = ["${module.elb.security_group_id}"]
+  security_groups = ["${module.elb.security_group_ids}"]
   key_name        = "${var.key_name}"
 
   associate_public_ip_address = false
