@@ -73,7 +73,7 @@ module "elb" {
 
 | Name | Description |
 |------|-------------|
-| security\_group\_id | The ID of the ELB security group to attach the the LC/ASG/EC2 instance in order to be accessable by the ELB. |
+| security\_group\_ids | The ID of the ELB security group to attach the the LC/ASG/EC2 instance in order to be accessable by the ELB. |
 | id | The name of the ELB |
 | name | The name of the ELB |
 | fqdn | The auto-generated FQDN of the ELB. |
