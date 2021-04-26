@@ -19,10 +19,11 @@ resource "aws_elb" "elb" {
   connection_draining_timeout = "${var.connection_draining_timeout}"
 
   listener {
-    instance_port     = "${var.instance_port}"
-    instance_protocol = "${var.instance_protocol}"
-    lb_port           = "${var.lb_port}"
-    lb_protocol       = "${var.lb_protocol}"
+    instance_port      = "${var.instance_port}"
+    instance_protocol  = "${var.instance_protocol}"
+    lb_port            = "${var.lb_port}"
+    lb_protocol        = "${var.lb_protocol}"
+    ssl_certificate_id = "${var.ssl_certificate_id}"
   }
 
   health_check {
