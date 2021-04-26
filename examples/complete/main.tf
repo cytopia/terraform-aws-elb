@@ -41,6 +41,8 @@ module "elb" {
   lb_port       = "22"
   instance_port = "22"
 
+  ssl_certificate_id = "arn:aws:acm:eu-central-1:123456789012:certificate/xxxxx-xxxx-xxxx-xxxx-xxxxx"
+
   # Security
   inbound_cidr_blocks  = ["0.0.0.0/0"]
   security_group_names = ["default"]
