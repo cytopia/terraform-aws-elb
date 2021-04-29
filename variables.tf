@@ -92,6 +92,13 @@ variable "instance_protocol" {
   default     = "TCP"
 }
 
+variable "ssl_certificate_id" {
+  description = <<EOF
+"The ARN of an SSL certificate you have uploaded to AWS IAM or
+ACM. Only valid when lb_protocol is either HTTPS or SSL"
+EOF
+}
+
 # -------------------------------------------------------------------------------------------------
 # Health Checks (Optional)
 # -------------------------------------------------------------------------------------------------

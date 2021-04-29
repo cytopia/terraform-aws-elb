@@ -68,6 +68,7 @@ module "elb" {
 | route53\_private\_dns\_name | If set, the ELB will be assigned this private DNS name via Route53. | string | `""` | no |
 | public\_dns\_evaluate\_target\_health | Set to true if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. | string | `"true"` | no |
 | private\_dns\_evaluate\_target\_health | Set to true if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. | string | `"true"` | no |
+| ssl\_certificate\_id | The ARN of an SSL certificate you have uploaded to AWS IAM or ACM. Only valid when lb_protocol is either HTTPS or SSL. | string | n/a | yes |
 
 ## Outputs
 
