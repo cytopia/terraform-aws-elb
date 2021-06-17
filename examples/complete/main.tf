@@ -9,7 +9,7 @@ provider "aws" {
 # VPC Resources
 # -------------------------------------------------------------------------------------------------
 module "aws_vpc" {
-  source = "github.com/terraform-aws-modules/terraform-aws-vpc?ref=v1.46.0"
+  source = "github.com/terraform-aws-modules/terraform-aws-vpc?ref=v2.78.0"
 
   cidr            = "14.0.0.0/16"
   azs             = ["eu-central-1a", "eu-central-1b", "eu-central-1c"]
@@ -19,9 +19,9 @@ module "aws_vpc" {
   enable_nat_gateway = true
   enable_vpn_gateway = false
 
-  name                = "${var.name}"
-  public_subnet_tags  = "${var.public_subnet_tags}"
-  private_subnet_tags = "${var.private_subnet_tags}"
+  name                = var.name
+  public_subnet_tags  = var.public_subnet_tags
+  private_subnet_tags = var.private_subnet_tags
 }
 
 # -------------------------------------------------------------------------------------------------
@@ -30,12 +30,12 @@ module "aws_vpc" {
 module "elb" {
   source = "../../"
 
-  name       = "${var.name}"
-  vpc_id     = "${module.aws_vpc.vpc_id}"
-  subnet_ids = "${module.aws_vpc.public_subnets}"
+  name       = var.name
+  vpc_id     = module.aws_vpc.vpc_id
+  subnet_ids = module.aws_vpc.public_subnets
 
   # Attach to ASG by name
-  asg_name = "${var.name}"
+  asg_name = var.name
 
   # Listener
   lb_port       = "22"
@@ -72,11 +72,11 @@ data "aws_ami" "bastion" {
 }
 
 resource "aws_launch_configuration" "bastion" {
-  name_prefix     = "${var.name}"
-  image_id        = "${data.aws_ami.bastion.image_id}"
+  name_prefix     = var.name
+  image_id        = data.aws_ami.bastion.image_id
   instance_type   = "t2.micro"
-  security_groups = ["${module.elb.security_group_ids}"]
-  key_name        = "${var.key_name}"
+  security_groups = module.elb.security_group_ids
+  key_name        = var.key_name
 
   associate_public_ip_address = false
 
@@ -86,12 +86,9 @@ resource "aws_launch_configuration" "bastion" {
 }
 
 resource "aws_autoscaling_group" "bastion" {
-  name = "${var.name}"
+  name = var.name
 
-  # ASG needs to go into the private subnets, as it would get a public IP address otherwise
-  # this is nonetheless if associate_public_ip_address is set to false.
-  # We have a public ELB anyway that routes to this bastion host.
-  vpc_zone_identifier = ["${module.aws_vpc.private_subnets}"]
+  vpc_zone_identifier = module.aws_vpc.private_subnets
 
   desired_capacity          = 1
   min_size                  = 1
@@ -100,5 +97,5 @@ resource "aws_autoscaling_group" "bastion" {
   health_check_type         = "EC2"
   force_delete              = false
   wait_for_capacity_timeout = 0
-  launch_configuration      = "${aws_launch_configuration.bastion.name}"
+  launch_configuration      = aws_launch_configuration.bastion.name
 }

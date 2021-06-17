@@ -5,7 +5,7 @@ variable "name" {
 
 variable "public_subnet_tags" {
   description = "A map of additional tags to apply to all public subnets"
-  type        = "map"
+  type        = map(string)
 
   default = {
     Visibility = "public"
@@ -14,7 +14,7 @@ variable "public_subnet_tags" {
 
 variable "private_subnet_tags" {
   description = "A map of additional tags to apply to all private subnets"
-  type        = "map"
+  type        = map(string)
 
   default = {
     Visibility = "private"
@@ -25,3 +25,4 @@ variable "key_name" {
   description = "Name of SSH key on AWS"
   default     = ""
 }
+
