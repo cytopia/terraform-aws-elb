@@ -15,7 +15,6 @@ variable "vpc_id" {
 
 variable "subnet_ids" {
   description = "List of subnet ids to place the ELB into."
-  type        = "list"
 }
 
 # -------------------------------------------------------------------------------------------------
@@ -31,12 +30,12 @@ variable "asg_name" {
 # -------------------------------------------------------------------------------------------------
 variable "inbound_cidr_blocks" {
   description = "List of CIDR's that are allowed to access the ELB."
-  type        = "list"
+  type        = list(string)
 }
 
 variable "security_group_names" {
   description = "List of one or more security groups to be added to the load balancer"
-  type        = "list"
+  type        = list(string)
   default     = []
 }
 
@@ -97,6 +96,7 @@ variable "ssl_certificate_id" {
 "The ARN of an SSL certificate you have uploaded to AWS IAM or
 ACM. Only valid when lb_protocol is either HTTPS or SSL"
 EOF
+  default     = ""
 }
 
 # -------------------------------------------------------------------------------------------------
@@ -139,7 +139,7 @@ variable "name" {
 # -------------------------------------------------------------------------------------------------
 variable "tags" {
   description = "Tags to apply to all resources."
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
 
@@ -170,3 +170,4 @@ variable "private_dns_evaluate_target_health" {
   description = "Set to true if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set."
   default     = true
 }
+
