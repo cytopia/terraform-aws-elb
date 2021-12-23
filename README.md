@@ -12,7 +12,7 @@ Additionally it provides the option to attach the created ELB to an autoscaling 
 
 ```hcl
 module "elb" {
-  source  = "github.com/cytopia/terraform-aws-elb?ref=v0.1.0"
+  source  = "github.com/Flaconi/terraform-aws-elb?ref=v1.1.0"
 
   name       = "my-elb"
   vpc_id     = "vpc-12345"
@@ -22,8 +22,8 @@ module "elb" {
   asg_name = "my-service"
 
   # Listener
-  lb_port       = "443"
-  instance_port = "80"
+  lb_port       = 443
+  instance_port = 80
 
   # Security
   inbound_cidr_blocks = ["0.0.0.0/0"]
@@ -83,10 +83,10 @@ module "elb" {
 
 ## Authors
 
-Module managed by [cytopia](https://github.com/cytopia).
+Module managed by [Flaconi](https://github.com/cytopia).
 
 ## License
 
 [MIT License](LICENSE)
 
-Copyright (c) 2018 [cytopia](https://github.com/cytopia)
+Copyright (c) 2018-2021 [Flaconi GmbH](https://github.com/Flaconi)

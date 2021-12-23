@@ -38,8 +38,8 @@ module "elb" {
   asg_name = var.name
 
   # Listener
-  lb_port       = "22"
-  instance_port = "22"
+  lb_port       = 22
+  instance_port = 22
 
   ssl_certificate_id = "arn:aws:acm:eu-central-1:123456789012:certificate/xxxxx-xxxx-xxxx-xxxx-xxxxx"
 
