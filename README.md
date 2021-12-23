@@ -73,7 +73,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_enable"></a> [enable](#input\_enable) | Whether or not to enable this module. This is required due to the lack of using count for modules. Set it to false to disable the creation of the ELB. Defaults to true | `bool` | `true` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | ID of the VPC to add this ELB to. | `string` | n/a | yes |
-| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | List of subnet ids to place the ELB into. | `string` | n/a | yes |
+| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | List of subnet ids to place the ELB into. | `list(string)` | n/a | yes |
 | <a name="input_asg_name"></a> [asg\_name](#input\_asg\_name) | Name of the auto scaling group to attach to. If this value is empty, no attachment will be done and is be left to the end-user via custom 'aws\_autoscaling\_group' or 'aws\_autoscaling\_attachment' definitions. | `string` | `""` | no |
 | <a name="input_inbound_cidr_blocks"></a> [inbound\_cidr\_blocks](#input\_inbound\_cidr\_blocks) | List of CIDR's that are allowed to access the ELB. | `list(string)` | n/a | yes |
 | <a name="input_security_group_names"></a> [security\_group\_names](#input\_security\_group\_names) | List of one or more security groups to be added to the load balancer | `list(string)` | `[]` | no |
@@ -150,7 +150,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_enable"></a> [enable](#input\_enable) | Whether or not to enable this module. This is required due to the lack of using count for modules. Set it to false to disable the creation of the ELB. Defaults to true | `bool` | `true` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | ID of the VPC to add this ELB to. | `string` | n/a | yes |
-| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | List of subnet ids to place the ELB into. | `string` | n/a | yes |
+| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | List of subnet ids to place the ELB into. | `list(string)` | n/a | yes |
 | <a name="input_asg_name"></a> [asg\_name](#input\_asg\_name) | Name of the auto scaling group to attach to. If this value is empty, no attachment will be done and is be left to the end-user via custom 'aws\_autoscaling\_group' or 'aws\_autoscaling\_attachment' definitions. | `string` | `""` | no |
 | <a name="input_inbound_cidr_blocks"></a> [inbound\_cidr\_blocks](#input\_inbound\_cidr\_blocks) | List of CIDR's that are allowed to access the ELB. | `list(string)` | n/a | yes |
 | <a name="input_security_group_names"></a> [security\_group\_names](#input\_security\_group\_names) | List of one or more security groups to be added to the load balancer | `list(string)` | `[]` | no |
@@ -228,7 +228,7 @@ No modules.
 | <a name="input_instance_port"></a> [instance\_port](#input\_instance\_port) | On what port does the ELB access the instances. | `number` | n/a | yes |
 | <a name="input_lb_port"></a> [lb\_port](#input\_lb\_port) | On what port do you want to access the ELB. | `number` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | Name of the ELB and security group resources. | `string` | n/a | yes |
-| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | List of subnet ids to place the ELB into. | `string` | n/a | yes |
+| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | List of subnet ids to place the ELB into. | `list(string)` | n/a | yes |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | ID of the VPC to add this ELB to. | `string` | n/a | yes |
 | <a name="input_asg_name"></a> [asg\_name](#input\_asg\_name) | Name of the auto scaling group to attach to. If this value is empty, no attachment will be done and is be left to the end-user via custom 'aws\_autoscaling\_group' or 'aws\_autoscaling\_attachment' definitions. | `string` | `""` | no |
 | <a name="input_connection_draining"></a> [connection\_draining](#input\_connection\_draining) | Boolean to enable connection draining. | `bool` | `false` | no |

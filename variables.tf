@@ -16,7 +16,7 @@ variable "vpc_id" {
 
 variable "subnet_ids" {
   description = "List of subnet ids to place the ELB into."
-  type        = string
+  type        = list(string)
 }
 
 # -------------------------------------------------------------------------------------------------
