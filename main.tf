@@ -52,12 +52,15 @@ resource "aws_security_group" "elb" {
   description = "ELB security group for external connection"
   vpc_id      = var.vpc_id
 
-  ingress {
-    from_port   = var.lb_port
-    to_port     = var.lb_port
-    protocol    = "tcp"
-    cidr_blocks = var.inbound_cidr_blocks
-    description = "External ELB connection"
+  dynamic "ingress" {
+    for_each = var.inbound_cidr_blocks
+    content {
+      from_port   = var.lb_port
+      to_port     = var.lb_port
+      protocol    = "tcp"
+      cidr_blocks = [ingress.value]
+      description = "External ELB connection"
+    }
   }
 
   egress {
