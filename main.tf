@@ -145,4 +145,3 @@ data "aws_route53_zone" "private" {
   # Removes the first sub-domain part from the FQDN to use as hosted zone.
   name = "${replace(var.route53_private_dns_name, "/^.+?\\./", "")}."
 }
-

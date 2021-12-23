@@ -9,7 +9,7 @@ provider "aws" {
 # VPC Resources
 # -------------------------------------------------------------------------------------------------
 module "aws_vpc" {
-  source = "github.com/terraform-aws-modules/terraform-aws-vpc?ref=v2.78.0"
+  source = "github.com/terraform-aws-modules/terraform-aws-vpc?ref=v3.11.0"
 
   cidr            = "14.0.0.0/16"
   azs             = ["eu-central-1a", "eu-central-1b", "eu-central-1c"]

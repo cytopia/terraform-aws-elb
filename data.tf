@@ -11,4 +11,3 @@ data "aws_security_groups" "elb" {
     values = [var.vpc_id]
   }
 }
-

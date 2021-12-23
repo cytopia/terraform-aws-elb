@@ -27,4 +27,3 @@ output "route53_private_dns_name" {
   description = "The route53 private dns name of the ELB if set."
   value       = var.route53_private_dns_name
 }
-
